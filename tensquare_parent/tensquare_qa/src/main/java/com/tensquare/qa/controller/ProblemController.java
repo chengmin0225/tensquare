@@ -103,5 +103,20 @@ public class ProblemController {
 		problemService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-	
+
+
+	/**
+	 * 根据标签id查询问题列表
+	 * @param labelId
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@RequestMapping(value="/newList/{labelId}/{page}/{size}",method= RequestMethod.DELETE)
+	public Result findNewListByLabelId(@PathVariable String labelId,@PathVariable int page,@PathVariable int size ){
+        Page<Problem> pageList = problemService.findNewListByLabelId(labelId, page, size);
+        PageResult<Problem> pageResult = new PageResult<>(pageList.getTotalElements(),pageList.getContent());
+        return new Result(true,StatusCode.OK,"查询成功",pageResult);
+    }
+
 }

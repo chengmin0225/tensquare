@@ -21,6 +21,6 @@ public interface ProblemDao extends JpaRepository<Problem,String>,JpaSpecificati
      * @param pageable
      * @return
      */
-    @Query()
-    Page<Problem> findNewListByLableId(String labelId, Pageable pageable);
+    @Query("select p from Problem  p where id in (select problemid from Pl where labelid = ?1) order by replytime desc")
+    Page<Problem> findNewListByLabelId(String labelId, Pageable pageable);
 }

@@ -149,4 +149,17 @@ public class ProblemService {
 
 	}
 
+
+	/**
+	 *根据标签id查询问题列表
+	 * @param labelId
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	public Page<Problem> findNewListByLabelId(String labelId,int page,int size){
+		PageRequest pageRequest = PageRequest.of(page,size);
+		return problemDao.findNewListByLabelId(labelId,pageRequest);
+	}
+
 }
