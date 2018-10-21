@@ -16,9 +16,9 @@ public class Pl implements Serializable {
     private static final long serialVersionUID = -5649514653928913134L;
 
     @Id
-    private String problemId;
+    private String problemid;
 
     @Id
-    private String labelId;
+    private String labelid;
 
 }
